@@ -124,3 +124,36 @@ describe("Test getDecimal method", () => {
         expect(new Fraction(1, 8).decimal).toBe(0.125);
     })
 });
+
+describe("Test simplify method", () => {
+    test("simplify 0", () => {
+        const f = new Fraction(8, 8);
+        f.simplify();
+        assertFraction(f, 1, 1);
+    })
+    test("simplify 1", () => {
+        const f = new Fraction(1, 8);
+        f.simplify();
+        assertFraction(f, 1, 8);
+    })
+    test("simplify 2", () => {
+        const f = new Fraction(15, 3);
+        f.simplify();
+        assertFraction(f, 5, 1);
+    })
+    test("simplify 3", () => {
+        const f = new Fraction(36, 48); // 18 / 24 -> 9 / 12 -> 3 / 4
+        f.simplify();
+        assertFraction(f, 3, 4);
+    })
+    test("simplify 4", () => {
+        const f = new Fraction(2777, 7901); // both prime numbers
+        f.simplify();
+        assertFraction(f, 2777, 7901);
+    })
+})
+
+function assertFraction(f: Fraction, a: number, b: number) {
+    expect(f.getNumerator()).toBe(a);
+    expect(f.getDenominator()).toBe(b);
+}
