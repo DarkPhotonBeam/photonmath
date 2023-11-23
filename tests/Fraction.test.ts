@@ -1,4 +1,4 @@
-import Fraction from "../src/Fraction/Fraction";
+import Fraction from "../src/Structures/Fraction";
 
 interface IFrac {
     a: number;

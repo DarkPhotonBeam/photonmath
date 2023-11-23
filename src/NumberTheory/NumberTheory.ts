@@ -1,4 +1,4 @@
-class NumberTheory {
+export default class NumberTheory {
 
     public static gcd(a: number, b: number): number {
         let R;
